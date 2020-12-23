@@ -1,1 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/bootswatch/dist/yeti/bootstrap.min.css';
+@import '../node_modules/alertifyjs/build/css/alertify.min.css';
+@import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
+@import '../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css';
+
+
+html,
+body{
+    min-height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+app-root{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+app-home{
+    height: 100%;
+    min-height: 80vh;
+    display: flex;
+}
+
+app-zaposleni-detalji,
+app-add-rad,
+app-predlozi-lista,
+app-predlog-detail,
+app-predlog-add,
+app-ugovor-add,
+app-ugovor-detail,
+app-ugovor-liste,
+app-odobrenja-lista,
+app-odobrenje-add,
+app-odobrenje-detail{
+    height: 100%;
+    min-height: 80vh;
+}
+
+.container{
+    width: 70%;
+}

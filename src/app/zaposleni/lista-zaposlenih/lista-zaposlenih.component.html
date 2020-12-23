@@ -1,0 +1,17 @@
+<div class="container">
+  <h1 class="diplay-4 mx-5">Zaposleni</h1>
+
+  <ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between vertical-align-center" *ngFor="let zap of zaposleni">
+      <div class="names pt-2 w-75 vertical-align-center">
+        <strong>{{zap.ime}} {{zap.prezime}}</strong>
+      </div>
+      <div class="buttons d-flex justify-content-end w-25">
+        <button class="btn btn-outline-info rounded-pill " [routerLink]="['/zaposleni/', zap.sifraZaposlenog]">
+          Detalji
+        </button>
+      </div>
+    </li>
+  </ul>
+
+</div>

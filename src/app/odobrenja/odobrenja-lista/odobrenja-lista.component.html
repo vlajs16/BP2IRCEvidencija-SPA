@@ -1,0 +1,23 @@
+<div class="container">
+  <h1 class="diplay-4 mb-5">Odobrenja projekata</h1>
+
+  <div class="w-100 d-flex justify-content-end">
+    <button class="btn btn-success rounded-pill my-5" [routerLink]="['/odobrenja/add']">
+      Odobri novi projekat
+    </button>
+  </div>
+  
+  <ul class="list-group mb-5">
+    <li class="list-group-item d-flex justify-content-between vertical-align-center" *ngFor="let odo of odobrenja">
+      <div class="names pt-2 w-75 vertical-align-center">
+        <strong>Šifra odobrenja: {{odo.sifraOdobrenja}} - odobreno: {{odo.datumOdobrenja | date: 'dd.MM.yyyy.'}} godine.</strong>
+      </div>
+      <div class="buttons d-flex justify-content-end w-25">
+        <button class="btn btn-outline-info rounded-pill " [routerLink]="['/odobrenja/detail/', odo.sifraOdobrenja]">
+          Detalji
+        </button>
+      </div>
+    </li>
+  </ul>
+
+</div>

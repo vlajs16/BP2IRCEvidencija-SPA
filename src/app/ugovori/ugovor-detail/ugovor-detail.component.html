@@ -1,0 +1,53 @@
+<div class="container">
+  <h1 class="display-4 text-center mb-5">Kreiranje ugovora</h1>
+  <div class="my-4 d-flex justify-content-end w-100">
+    <button class="btn btn-warning rounded-pill" (click)="toggle()">{{!editing ? 'Izmeni ugovor' : 'Odustani od izmene'}}</button>
+  </div>
+  <form [formGroup]="ugovorForm" (submit)="edit()">
+
+    <div class="form-group mb-4">
+      <label for="sifraUgovora">Šifra ugovora</label>
+      <input class="form-control rounded-pill" id="sifraUgovora" type="number" formControlName="sifraUgovora"
+        name="sifraUgovora">
+    </div>
+
+    <div class="form-group">
+      <label for="sifraOdobrenja">Na osnovu odobrenja: </label>
+      <select class="form-control rounded-pill" id="sifraOdobrenja" name="sifraOdobrenja"
+        formControlName="sifraOdobrenja" (change)="onChange()">
+        <option value="{{odob.sifraOdobrenja}}" *ngFor="let odob of odobrenja">{{odob.predlogProjekta.nazivProjekta}}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="sifraPredlogaProjekta">Šifra predloga projekta: </label>
+      <select class="form-control rounded-pill" id="sifraPredlogaProjekta" name="sifraPredlogaProjekta"
+        formControlName="sifraPredlogaProjekta">
+        <option value="{{predlog.sifraPredlogaProjekta}}" *ngFor="let predlog of predlozi">{{predlog.sifraPredlogaProjekta}}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group date">
+      <label for="datumDonosenja">Datum donošenja: </label>
+      <input type="text" formControlName="datumDonosenja" class="form-control rounded-pill" [bsConfig]="bsConfig"
+        bsDatepicker>
+    </div>
+
+    <div class="form-group date">
+      <label for="datumIsteka">Datum isteka: </label>
+      <input type="text" formControlName="datumIsteka" class="form-control rounded-pill" [bsConfig]="bsConfig"
+        [minDate]="ugovorForm.get('datumDonosenja').value" bsDatepicker>
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="opisUgovora">Opis ugovora: </label>
+      <textarea class="form-control rounded-pill" id="opisUgovora" formControlName="opisUgovora"
+        name="opisUgovora"></textarea>
+    </div>
+    <div class="my-4 d-flex jusiify-content-center w-100">
+      <button class="btn btn-success my-5 mx-auto w-25 rounded-pill" type="submit" [disabled]="ugovorForm.disabled || !ugovorForm.touched">Ažuriraj</button>
+    </div>
+  </form>
+</div>

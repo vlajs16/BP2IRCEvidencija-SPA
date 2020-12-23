@@ -1,0 +1,42 @@
+<div class="container">
+  <h1 class="diplay-4 mb-5">Predlozi projekata</h1>
+
+  <div class="w-100 d-flex justify-content-between">
+    <form [formGroup]="searchForm" (submit)="search()" class="w-50 d-flex justify-content-left">
+      <div class="form-group">
+        <label for="sifraKompanije">Pretraži prema kompaniji: </label>
+        <select class="form-control rounded-pill" id="sifraKompanije" name="sifraKompanije"
+          formControlName="sifraKompanije">
+          <option value="{{komp.sifraKompanije}}" *ngFor="let komp of kompanije">{{komp.nazivKompanije}} </option>
+        </select>
+      </div>
+      <button class="btn btn-warning rounded-pill mt-4" [disabled]="searchForm.invalid" type="submit">
+        Filtriraj
+      </button>
+      <button class="btn btn-outline-warning rounded-pill  mt-4" [disabled]="!searched" (click)="clear()">
+        Resetuj filtere
+      </button>
+    </form>
+
+    <button class="btn btn-success rounded-pill my-5" [routerLink]="['/predlozi/add']">
+      Dodaj novi predlog
+    </button>
+  </div>
+  
+
+  
+
+  <ul class="list-group mb-5">
+    <li class="list-group-item d-flex justify-content-between vertical-align-center" *ngFor="let pred of predlozi">
+      <div class="names pt-2 w-75 vertical-align-center">
+        <strong>{{pred.nazivProjekta}} - {{pred.nazivKompanije}}</strong>
+      </div>
+      <div class="buttons d-flex justify-content-end w-25">
+        <button class="btn btn-outline-info rounded-pill " [routerLink]="['/predlozi/detail/', pred.sifraPredlogaProjekta]">
+          Detalji
+        </button>
+      </div>
+    </li>
+  </ul>
+
+</div>

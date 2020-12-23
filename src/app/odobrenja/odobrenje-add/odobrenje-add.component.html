@@ -1,0 +1,42 @@
+<div class="container">
+  <h1 class="display-4 text-center mb-5">Kreiranje odobrenja</h1>
+  <form [formGroup]="odobrenjeForm" (submit)="add()">
+
+    <div class="form-group mb-4">
+      <label for="sifraOdobrenja">Šifra odobrenja: </label>
+      <input class="form-control rounded-pill" id="sifraOdobrenja" type="number" formControlName="sifraOdobrenja"
+        name="sifraOdobrenja">
+    </div>
+
+    <div class="form-group">
+      <label for="sifraPredlogaProjekta">Za projekat: </label>
+      <select class="form-control rounded-pill" id="sifraPredlogaProjekta" name="sifraPredlogaProjekta"
+        formControlName="sifraPredlogaProjekta">
+        <option value="{{predlog.sifraPredlogaProjekta}}" *ngFor="let predlog of predlozi">{{predlog.nazivProjekta}}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group date">
+      <label for="datumOdobrenja">Datum odobravanja: </label>
+      <input type="text" formControlName="datumOdobrenja" class="form-control rounded-pill" [bsConfig]="bsConfig"
+        bsDatepicker>
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="opisOdobrenja">Opis odobrenja: </label>
+      <textarea class="form-control rounded-pill" id="opisOdobrenja" formControlName="opisOdobrenja"
+        name="opisOdobrenja"></textarea>
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="napomena">Napomena: </label>
+      <textarea class="form-control rounded-pill" id="napomena" formControlName="napomena"
+        name="napomena"></textarea>
+    </div>
+
+    <div class="my-4 d-flex jusiify-content-center w-100">
+      <button class="btn btn-success my-5 mx-auto w-25 rounded-pill" type="submit">Odobri projekat</button>
+    </div>
+  </form>
+</div>

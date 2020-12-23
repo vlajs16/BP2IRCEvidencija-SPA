@@ -1,0 +1,42 @@
+<div class="container">
+  <h1 class="display-4 text-center  mb-5">Detalji zaposlenog</h1>
+
+  <div class="informacije w-75 mx-auto mb-5">
+    <p class="info">
+      <strong>Šifra zaposlenog: </strong> {{zaposleni.sifraZaposlenog}}
+    </p>
+    <p class="info">
+      <strong>Ime: </strong> {{zaposleni.ime}}
+    </p>
+    <p class="info">
+      <strong>Prezime: </strong> {{zaposleni.prezime}}
+    </p>
+    <p class="info">
+      <strong>JMBG: </strong> {{zaposleni.jmbg}}
+    </p>
+    <p class="info">
+      <strong>Datum zaposlenja: </strong> {{zaposleni.datumZaposlenja | date:'dd.MM.yyyy.'}}
+    </p>
+
+    <p class="info d-flex justify-content-between">
+      <strong>Pozicije: </strong>
+      <button class="btn btn-success rounded-pill" [routerLink]="['/rad/add/', zaposleni.sifraZaposlenog]">
+        Dodaj novu
+      </button>
+    </p>
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between vertical-align-center" 
+          *ngFor="let rad of zaposleni.radoviNaPoziciji">
+        <div class="names pt-2 w-75 vertical-align-center">
+          <strong  class="pozicija" [ngClass]="{'text-info': rad.trenutna}">{{rad.nazivPozicije}}</strong>
+        </div>
+        <div class="buttons d-flex justify-content-end w-25">
+          <button class="btn btn-outline-info rounded-pill " [routerLink]="['/rad/edit/', rad.sifraZaposlenog, rad.sifraPozicije, rad.datumOd]">
+            Izmeni
+          </button>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+</div>

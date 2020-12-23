@@ -1,0 +1,46 @@
+<div class="container">
+  <h1 class="diplay-4 mb-5">Predlozi projekata</h1>
+
+  <div class="w-100 d-flex justify-content-between">
+    <form [formGroup]="searchForm" (submit)="search()" class="w-75 d-flex justify-content-left">
+      <div class="form-group date w-25">
+        <label for="datumOd">Donja granica sklapanja ugovora: </label>
+        <input type="text" formControlName="datumOd" class="form-control rounded-pill" [bsConfig]="bsConfig"
+          bsDatepicker>
+      </div>
+  
+      <div class="form-group date w-25">
+        <label for="datumDo">Gornja granica isteka ugovora: </label>
+        <input type="text" formControlName="datumDo" class="form-control rounded-pill" [bsConfig]="bsConfig"
+         bsDatepicker>
+      </div>
+      <button class="btn btn-warning rounded-pill ml-4 mt-4" [disabled]="searchForm.invalid" type="submit">
+        Filtriraj
+      </button>
+      <button class="btn btn-outline-warning rounded-pill mt-4" [disabled]="!searched" (click)="clear()">
+        Resetuj filtere
+      </button>
+    </form>
+
+    <button class="btn btn-success rounded-pill my-5" [routerLink]="['/ugovori/add']">
+      Kreiraj novi ugovor
+    </button>
+  </div>
+  
+  <ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between vertical-align-center" *ngFor="let ugovor of ugovori">
+      <div class="names pt-2 w-75 vertical-align-center">
+        <strong>Šifra ugovora: {{ugovor.sifraUgovora}} - potpisan: {{ugovor.datumDonosenja | date: 'dd.MM.yyyy.'}} godine</strong>
+      </div>
+      <div class="buttons d-flex justify-content-end w-25">
+        <button class="btn btn-outline-info rounded-pill mr-2" [routerLink]="['/ugovori/detail/', ugovor.sifraUgovora]">
+          Detalji
+        </button>
+        <button class="btn btn-outline-danger rounded-pill" (click)="delete(ugovor.sifraUgovora)">
+          Obriši
+        </button>
+      </div>
+    </li>
+  </ul>
+
+</div>

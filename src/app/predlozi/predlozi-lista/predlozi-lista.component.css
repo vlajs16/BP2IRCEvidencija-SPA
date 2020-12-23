@@ -1,0 +1,11 @@
+.names{
+    font-size: 1.2em;
+}
+
+.buttons{
+    min-width: 60px!important;
+}
+
+form .btn{
+    height: 40px;
+}
